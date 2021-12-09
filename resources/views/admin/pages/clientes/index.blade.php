@@ -6,9 +6,9 @@
 
 @section('content')
 
-    <h1>Pagina de Clientes</h1>
+    <h1 class="text-center">Pagina de Clientes</h1>
 
-    <a class="btn btn-light" href="{{route('cliente.create')}}"> Cadastrar Novo Cliente</a>
+    <a class="btn btn-outline-dark" href="{{route('cliente.create')}}"> Cadastrar Novo Cliente</a>
     <hr><br>
 
     <table class="table table-striped">
@@ -29,13 +29,16 @@
                     <td width=100>
                         <a href="{{route('cliente.edit',$client->id)}}">Editar</i></a>
                         <a href="{{route('cliente.show',$client->id)}}">Detalhes</a>
-                        
-                        <form action="{{route('cliente.destroy',$client->id)}}" method="post">
+                        <a class="btn btn-danger" href="#" data-toggle="modal" data-target="#modalDelete{{$client->id}}" > 
+                            {{__('Eliminar')}}
+                        </a>
+                        {{-- <form action="{{route('cliente.destroy',$client->id)}}" method="post">
                             @csrf
                             @method('DELETE')
 
                             <button class="btn btn-link" type="submit" >Eliminar</button>
-                        </form> 
+                        </form>  --}}
+                        @include('admin.includes.deleteConfirm')
                     </td>
                 </tr>
                 
